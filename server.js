@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname,"client","build")))
   
 app.get('/search/:str',async (req,res)=>{
     const s=req.params.str
-   const result=await fetchItems(s)
+   const result=await fetchItems(s.toLowerCase())
    res.send(result) 
 })
 
