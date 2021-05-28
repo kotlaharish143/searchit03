@@ -8,14 +8,18 @@ app.use(express.static(path.join(__dirname,"client","build")))
 const store_init= new store({
     name:"rm general store",
     location:"IIT BHU",
-    items:[{id:1,itemname:"colin",price:30},{id:2,itemname:"comfort",price:80},{id:3,itemname:"condioola",price:50}]
+    items:[{id:1,itemname:"dmata",price:30},{id:2,itemname:"daling",price:80},{id:3,itemname:"cerlac",price:50}]
 })   
 async function fun(str){
     try {
        await  store_init.save();
         console.log(str) 
      // mongodb: { ..., firstName_fuzzy: [String], lastName_fuzzy: [String] }
-    
+     const results=await store.find({"items.itemname":
+     {
+       $regex:new RegExp(String(str)),
+ 
+     }},);
      const entries=await store.find({"items.itemname":
         {
           $regex:new RegExp(String(str)),
@@ -31,20 +35,18 @@ async function fun(str){
        
        entries.map((itemx)=>(itemx.items.map((item)=>{
           
-         if(RegExp(str).test(item.itemname)){
-            if(objectMap[item.itemname]!=null){
-                objectMap[item.itemname].numStores+=1;
-                objectMap[item.itemname].avgPrice+=item.price;
-               }
-               else{
-                var obj={
-                    numStores:1,
-                    avgPrice:item.price
-                }
-                objectMap[item.itemname]=obj;
-               }
-         }
-       
+         
+        if(objectMap[item.itemname]!=null){
+            objectMap[item.itemname].numStores+=1;
+            objectMap[item.itemname].avgPrice+=item.price;
+           }
+           else{
+            var obj={
+                numStores:1,
+                avgPrice:item.price
+            }
+            objectMap[item.itemname]=obj;
+           }
         })))
       
        console.log(objectMap)

@@ -1,0 +1,44 @@
+.searchResults{
+    
+/* width:490px; */
+height:auto;
+max-height: 500px;
+overflow-y: scroll;
+border-radius: 20px;
+}
+
+.search-container{
+    border-radius: 20px !important;
+    
+    
+  
+}
+.searchbox{
+    border:none !important;
+    outline:none !important
+}
+.searchbox::marker{
+    border:none !important;
+}
+.resitem{
+    height:90px;
+    margin-left: 40px;
+   
+}
+.item-container  {
+    border-bottom:thin solid rgb(211, 197, 197) !important;
+   
+}
+.down{
+    height:15px !important;
+    width:15px !important;
+}
+.gil{
+    font-weight: 1000;
+}
+.seconddiv{
+    border-left: thin solid #000000;
+}
+.boldText{
+    font-weight: 1000;
+}

@@ -1,6 +1,6 @@
 
 import './App.css';
-import SearchBar from './components/SearchBar'
+import SearchResults from './components/SearchResults'
 
 function App() {
   const style={
@@ -8,7 +8,8 @@ function App() {
     fontSize:120
   }
   return ( 
-    <SearchBar />
+    <SearchResults/>
+
   );
 }
 
