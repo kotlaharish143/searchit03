@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    
+    "start":"node server.js",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "author": "",
   "license": "ISC",
@@ -15,5 +17,8 @@
     "mongoose": "^5.12.11",
     "mongoose-fuzzy-searching": "^2.0.2",
     "morgan": "^1.10.0"
+  },"emgines":{
+    "node":"12.18.2"
   }
+  
 }

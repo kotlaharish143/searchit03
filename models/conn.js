@@ -1,6 +1,6 @@
 const mongoose=require('mongoose')
 const Schema=mongoose.Schema
-const db= mongoose.connect("mongodb://localhost:27017/test",{
+const db= mongoose.connect("mongodb+srv://harish143:12345678@@cluster0.5b5nr.mongodb.net/searchIt?retryWrites=true&w=majority",{
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
