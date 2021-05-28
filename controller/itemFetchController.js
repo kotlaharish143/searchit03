@@ -1,15 +1,10 @@
 
 const {store}=require('../models/store')
 
-const store_init= new store({
-    name:"rm general store",
-    location:"IIT BHU",
-    items:[{id:1,itemname:"nutella",price:30},{id:2,itemname:"complan",price:80},{id:3,itemname:"colgate",price:50}]
-}) 
 async function fetchItems(str){
 
     try {
-      await store_init.save()
+     
      const entries=await store.find({"items.itemname":
         {
           $regex:new RegExp(String(str)),
