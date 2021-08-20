@@ -5,18 +5,15 @@ import loc from "../Images/loc.png"
 import down from "../Images/down.png"
 import search from "../Images/search.png"
 export default function SearchBar() {
-  const [text,setText]=useState('init')
-  const [res,setRes]=useState({})
+  const [text,setText]=useState("")
+  const [res,setRes]=useState([])
+  const [loc,setLoc]=useState("Select a location")
   const handleChange = e => setText(e.target.value)
   const searchFunction=async ()=>{
    
    var x=await axios.get("/search/"+text);
-        
-    
    if(x){
-    //    console.log(x)
        setRes(x.data)
-       console.log(res);
    }else{
        console.log("empty response")
    }}
@@ -27,12 +24,21 @@ searchFunction()
     return (
         <div class="container">
           <div class="row">
-          <div class="offset-md-3 my-2 col-md-9  card shadow search-container p-3 d-flex md-flex-row align-items-center">
-            <div class="d-flex col-md-12 flex-row p-2">
+          <div class="offset-md-3 my-2 col-md-9 col-xs-12 p-2 card shadow search-container  d-flex md-flex-row align-items-center">
+            <div class="d-flex col-md-12 md-flex-row xs-flex-column ">
             <div class=" col-md-4  d-flex flex-row mx-2 align-items-center">
          <img class="mx-1" src={loc}/>
-         <span class="mx-3 boldText">IIT BHU</span>
-         <img class="mx-3 ms-auto down" src={down}/>
+         <div class="dropdown  ms-auto">
+  <button class="btn dropdown-button" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+  <img class="mx-3  down " src={down}/>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+   {
+     
+   }
+  </ul>
+</div>
+         
             </div>
             
             <div class=" col-md-7 d-flex seconddiv flex-row align-items-center">
@@ -49,14 +55,16 @@ searchFunction()
           
 <div  class={(res!={})?" col-md-6 card shadow col-md-6 mt-2 d-flex  searchResults":""} id="result">
 {
-Object.keys(res).map(function(key, index) {
+          res.map((product)=> {
   
-      return <div class="item-container  "><div class="resitem d-flex flex-column justify-content-center"><h5 class="gil">{key}</h5><span key={index}>Available in {res[key].numStores} near by store with avg cost of ${res[key].avgPrice/res[key].numStores}</span></div></div>
-})}
+      return <div class="item-container  ">
+        <div class="resitem d-flex flex-column justify-content-center">
+          <h5 class="gil">{product.productName}</h5>
+          </div>
+          </div>
+  })}
          
           </div>
        </div>
        </div>
-    )
-
-            }
+    )}

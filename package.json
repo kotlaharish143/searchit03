@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     
-    "start":"node server.js",
+    "start": "(cd client && npm run build) && (cd .. && nodemon server.js)",
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "author": "",
@@ -15,10 +15,9 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongoose": "^5.12.11",
-    "mongoose-fuzzy-searching": "^2.0.2",
     "morgan": "^1.10.0"
-  },"emgines":{
-    "node":"12.18.2"
+  },
+  "engines": {
+    "node": "12.18.2"
   }
-  
 }

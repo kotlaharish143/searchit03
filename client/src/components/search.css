@@ -4,6 +4,7 @@
 height:auto;
 max-height: 500px;
 overflow-y: scroll;
+overflow-x:none;
 border-radius: 20px;
 }
 
@@ -17,14 +18,20 @@ border-radius: 20px;
     border:none !important;
     outline:none !important
 }
+.dropdown-button {
+    outline:none !important
+}
 .searchbox::marker{
     border:none !important;
 }
-.resitem{
-    height:90px;
-    margin-left: 40px;
-   
-}
+@media screen and (min-width: 480px) {
+    .resitem{
+        height:90px;
+        margin-left: 40px;
+       
+    }
+  }
+
 .item-container  {
     border-bottom:thin solid rgb(211, 197, 197) !important;
    
